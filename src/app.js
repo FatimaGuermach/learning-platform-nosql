@@ -6,16 +6,25 @@ const config = require('./config/env');
 const db = require('./config/db');
 
 const courseRoutes = require('./routes/courseRoutes');
-const studentRoutes = require('./routes/studentRoutes');
+//const studentRoutes = require('./routes/studentRoutes');
 
 const app = express();
 
 async function startServer() {
   try {
-    // TODO: Initialiser les connexions aux bases de données
+      // Initialisation des connexions aux bases de données (MongoDB et Redis)
+      await db.connectMongo();
+      
+  
+   
+    
     // TODO: Configurer les middlewares Express
     // TODO: Monter les routes
     // TODO: Démarrer le serveur
+    const port = config.port || 3000;
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
   } catch (error) {
     console.error('Failed to start server:', error);
     process.exit(1);
