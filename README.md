@@ -1,20 +1,19 @@
 # Projet de fin de module NoSQL
-QUESTION/REPONSES:
-# config/db.js
-  1.question 
+# QUESTION/REPONSES:
+ # config/db.js
+ 
+  1.question :
   Pourquoi créer un module séparé pour les connexions aux bases de données ?
 
-  => reponse :
+   reponse :
   -Un module séparé rend ton code plus propre, sécurisé et facile à maintenir
   -avec cette methode on a la gestion des erreurs facilement 
   -Isoler la connexion facilite l'écriture de tests unitaires et de tests d'intégration.
    On peut simuler la base de données sans affecter le reste du code...
 
    2.question :
-
  Comment gérer proprement la fermeture des connexions ?
-    =>reponse:
-
+    reponse:
  our gérer proprement la fermeture des connexions, il est recommandé d'utiliser des gestionnaires d'événements comme 
 `process.on('SIGINT')` pour détecter l'arrêt de l'application et fermer les connexions de manière contrôlée. 
 MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libérer les ressources. 
@@ -31,7 +30,8 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
 - Réponse : 
  L'application doit cesser son exécution immédiatement avec un message d'erreur clair, afin de prévenir des erreurs inattendues et de signaler précisément le problème.
 
-   # controllers/courseController.js
+
+ # controllers/courseController.js
    
    
   1. Question: Quelle est la différence entre un contrôleur et une route ?
@@ -41,15 +41,16 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
 
   2.Question : Pourquoi séparer la logique métier des routes ?
    Réponse :
-  -Séparer la logique métier des routes permet de rendre le code plus clair, mieux organisé et plus facile à maintenir. Cela simplifie également la création de tests unitaires, car la logique peut être testée de manière indépendante des routes.
+  -Séparer la logique métier des routes permet de rendre le code plus clair, mieux organisé et plus facile à maintenir. Cela simplifie également la création de tests unitaires, car la logique peut être testée de 
+    manière indépendante des routes.
 
   # routes/courseRoutes.js
 
    1 . Question: Pourquoi séparer les routes dans différents fichiers ?
 
-   => Réponse : 
+    Réponse : 
        
-       Séparer les routes dans plusieurs fichiers permet de mieux organiser le code, le rendant plus clair et plus facile à gérer, surtout dans les projets de grande taille avec de nombreux points d'accès.
+  Séparer les routes dans plusieurs fichiers permet de mieux organiser le code, le rendant plus clair et plus facile à gérer, surtout dans les projets de grande taille avec de nombreux points d'accès.
 
  2.Question : Comment organiser les routes de manière cohérente ?
  
@@ -58,9 +59,10 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
       Il est recommandé de regrouper les routes par fonctionnalité ou domaine spécifique (par exemple, userRoutes.js pour la gestion des utilisateurs) afin de maintenir une structure logique et compréhensible du projet.
 
    # service/mongoService.js
-    1. Question: Pourquoi créer des services séparés ?
+   1. Question: Pourquoi créer des services séparés ?
 
-    =>Réponse:  Créer des services séparés permet de centraliser la logique métier, favorisant ainsi sa réutilisation et réduisant la répétition de code dans les contrôleurs. 
+   Réponse: 
+  Créer des services séparés permet de centraliser la logique métier, favorisant ainsi sa réutilisation et réduisant la répétition de code dans les contrôleurs. 
 
    # service/redisService.js
   1.Question : Comment gérer efficacement le cache avec Redis ?
