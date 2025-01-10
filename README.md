@@ -24,11 +24,11 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
 # config/env.js
   1. Question: 
  Pourquoi est-il important de valider les variables d'environnement au démarrage ?
- => Réponse : 
-  Pour garantir que l'application démarre avec toutes les configurations essentielles, réduisant ainsi les risques de dysfonctionnements et facilitant le diagnostic des erreurs dès le lancement.
+  Réponse : 
+  -Pour garantir que l'application démarre avec toutes les configurations essentielles, réduisant ainsi les risques de dysfonctionnements et facilitant le diagnostic des erreurs dès le lancement.
 
 2.Question: Que se passe-t-il si une variable requise est manquante ?
-=> Réponse : 
+- Réponse : 
  L'application doit cesser son exécution immédiatement avec un message d'erreur clair, afin de prévenir des erreurs inattendues et de signaler précisément le problème.
 
    # controllers/courseController.js
@@ -36,12 +36,12 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
    
   1. Question: Quelle est la différence entre un contrôleur et une route ?
  
- => Réponse:
-     Une route spécifie l'URL et la méthode HTTP (comme GET ou POST) à utiliser, tandis qu'un contrôleur contient le code qui gère la logique de traitement lorsque cette route est appelée.
+  Réponse:
+     -Une route spécifie l'URL et la méthode HTTP (comme GET ou POST) à utiliser, tandis qu'un contrôleur contient le code qui gère la logique de traitement lorsque cette route est appelée.
 
   2.Question : Pourquoi séparer la logique métier des routes ?
-=> Réponse :
-  Séparer la logique métier des routes permet de rendre le code plus clair, mieux organisé et plus facile à maintenir. Cela simplifie également la création de tests unitaires, car la logique peut être testée de manière indépendante des routes.
+   Réponse :
+  -Séparer la logique métier des routes permet de rendre le code plus clair, mieux organisé et plus facile à maintenir. Cela simplifie également la création de tests unitaires, car la logique peut être testée de manière indépendante des routes.
 
   # routes/courseRoutes.js
 
@@ -63,19 +63,19 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
     =>Réponse:  Créer des services séparés permet de centraliser la logique métier, favorisant ainsi sa réutilisation et réduisant la répétition de code dans les contrôleurs. 
 
    # service/redisService.js
-      1.Question : Comment gérer efficacement le cache avec Redis ?
+  1.Question : Comment gérer efficacement le cache avec Redis ?
         Réponse :
         Il est essentiel de définir des clés avec des durées de vie limitées (TTL) et de mettre à jour ou supprimer les données obsolètes pour maintenir un cache optimal.
-    2.Question: Quelles sont les bonnes pratiques pour les clés Redis ?
+   2.Question: Quelles sont les bonnes pratiques pour les clés Redis ?
        Réponse :
        Il est recommandé d'utiliser des noms de clés explicites et de prévenir les conflits en ajoutant des préfixes (par exemple, courses:) pour mieux organiser les données.
    # app.js    
       
-       1. Question: Comment organiser le point d'entrée de l'application ?
+   1. Question: Comment organiser le point d'entrée de l'application ?
        reponse:
         Il est important d'initialiser les connexions aux services externes, configurer les middlewares nécessaires et ensuite définir les routes pour structurer le processus de démarrage de l'application.
    
-     2. Question: Quelle est la meilleure façon de gérer le démarrage de l'application ?
+  2. Question: Quelle est la meilleure façon de gérer le démarrage de l'application ?
        reponse:
           La gestion du démarrage de l'application doit inclure des blocs try-catch pour capturer et traiter les erreurs éventuelles, assurant ainsi une gestion appropriée des échecs dès le lancement.
   # env.
