@@ -14,7 +14,7 @@ async function startServer() {
   try {
       // Initialisation des connexions aux bases de données (MongoDB et Redis)
       await db.connectMongo();
-      
+      await db.connectRedis();
   
    
     

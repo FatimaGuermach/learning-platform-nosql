@@ -38,11 +38,16 @@ async function connectRedis() {
     };
 
     connectAttempt(); 
+    redisClient.connect();
   });
 }
 
 // Export des fonctions et clients
 module.exports = {
   connectRedis,
-  connectMongo
+  connectMongo,
+  getdb:()=> db,
+  getrediseClient:()=>redisClient,
+
+  
 };
