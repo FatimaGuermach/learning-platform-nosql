@@ -1,13 +1,62 @@
-// Question : Comment gérer efficacement le cache avec Redis ?
-// Réponse :
-// Question: Quelles sont les bonnes pratiques pour les clés Redis ?
-// Réponse :
+const db = require("../config/db");
 
-// Fonctions utilitaires pour Redis
+
 async function cacheData(key, data, ttl) {
-    // TODO: Implémenter une fonction générique de cache
-  }
-  
-  module.exports = {
-    // TODO: Exporter les fonctions utilitaires
-  };
+    try {
+        const redisClient = db.getRedisClient();
+        const value = JSON.stringify(data);
+        const result = await redisClient.set(key, value, "EX", ttl);
+        return result; // Retourne "OK" si l'opération réussit
+    } catch (error) {
+        console.error("Erreur lors de la mise en cache :", error);
+        throw error;
+    }
+}
+
+/**
+ * Fonction pour récupérer des données depuis le cache Redis.
+ * @param {string} key - La clé des données à récupérer.
+ * @returns {Object|null} - Les données parsées ou null si absentes.
+ */
+async function getCachedData(key) {
+    try {
+        const redisClient = db.getRedisClient();
+        const data = await redisClient.get(key);
+        return data ? JSON.parse(data) : null;
+    } catch (error) {
+        console.error("Erreur lors de la récupération du cache :", error);
+        throw error;
+    }
+}
+
+
+async function deleteCachedData(key) {
+    try {
+        const redisClient = db.getRedisClient();
+        const result = await redisClient.del(key);
+        return result; // Retourne 1 si supprimée, 0 sinon
+    } catch (error) {
+        console.error("Erreur lors de la suppression du cache :", error);
+        throw error;
+    }
+}
+
+
+async function isKeyCached(key) {
+    try {
+        const redisClient = db.getRedisClient();
+        const result = await redisClient.exists(key);
+        return result === 1; // Retourne true si la clé existe, sinon false
+    } catch (error) {
+        console.error("Erreur lors de la vérification du cache :", error);
+        throw error;
+    }
+}
+
+// Exportation des services Redis
+module.exports = {
+    cacheData,
+    getCachedData,
+    deleteCachedData,
+    isKeyCached
+};
