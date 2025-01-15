@@ -39,12 +39,12 @@ async function startServer() {
 process.on('SIGTERM', async () => {
   console.log('Received SIGTERM. Closing connections...');
   try {
-    if (db.mongoClient) {
-      await db.mongoClient.close();
+    if (db.getdb()) {
+      await db.getdb().close();
       console.log('MongoDB connection closed.');
     }
-    if (db.redisClient) {
-      await db.redisClient.disconnect();
+    if (db.getrediseClient()) {
+      await db.getrediseClient().disconnect();
       console.log('Redis connection closed.');
     }
     process.exit(0);
