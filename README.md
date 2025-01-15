@@ -1,4 +1,6 @@
 # Projet de fin de module NoSQL
+
+
 # QUESTION/REPONSES:
  # config/db.js
  
@@ -14,8 +16,7 @@
    2.question :
  Comment gérer proprement la fermeture des connexions ?
     reponse:
- our gérer proprement la fermeture des connexions, il est recommandé d'utiliser des gestionnaires d'événements comme 
-`process.on('SIGINT')` pour détecter l'arrêt de l'application et fermer les connexions de manière contrôlée. 
+ our gérer proprement la fermeture des connexions, il est recommandé d'utiliser des gestionnaires d'événements comme `process.on('SIGINT')` pour détecter l'arrêt de l'application et fermer les connexions de manière contrôlée. 
 MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libérer les ressources. 
  Un bloc `try...catch...finally` peut également être utilisé pour s'assurer que les connexions sont fermées même en cas d'erreur.
 
@@ -48,7 +49,7 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
 
    1 . Question: Pourquoi séparer les routes dans différents fichiers ?
 
-    Réponse : 
+   Réponse : 
        
   Séparer les routes dans plusieurs fichiers permet de mieux organiser le code, le rendant plus clair et plus facile à gérer, surtout dans les projets de grande taille avec de nombreux points d'accès.
 
@@ -89,8 +90,10 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
       => Réponse : 
       Les variables d'environnement permettent de stocker des informations sensibles et des paramètres spécifiques à chaque environnement, sans les intégrer directement dans le code. Cela renforce la sécurité, la portabilité et la flexibilité des applications, en permettant de modifier ces valeurs sans toucher au code source.
 
-   ---START RUNING APPLICATION-----------
-   using npm start
+   # START RUNING APPLICATION
+      using npm start
+
+   
    ![Logo](images/runpic.png)
 
 
