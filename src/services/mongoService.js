@@ -27,7 +27,18 @@ async function insertOne(collectionName, document) {
     }
 }
 
-
+async function findAll(collectionName, filter = {}, options = {}) {
+    try {
+        const dbClient = db.getdb();
+        const collection = dbClient.collection(collectionName);
+        const cursor = collection.find(filter, options);
+        const results = await cursor.toArray();
+        return results;
+    } catch (error) {
+        console.error("Erreur lors de la recherche de tous les documents :", error);
+        throw error;
+    }
+}
  // Fonction pour mettre à jour un document par ID dans une collection MongoDB.
 
 async function updateOneById(collectionName, id, update) {
@@ -63,5 +74,6 @@ module.exports = {
     findOneById,
     insertOne,
     updateOneById,
-    deleteOneById
+    deleteOneById,
+    findAll
 };
