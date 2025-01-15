@@ -35,7 +35,7 @@ async function startServer() {
   }
 }
 
-// Clean shutdown
+
 process.on('SIGTERM', async () => {
   console.log('Received SIGTERM. Closing connections...');
   try {
