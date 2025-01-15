@@ -89,6 +89,10 @@ MongoDB propose la méthode `close()` et Redis la méthode `quit()` pour libére
       => Réponse : 
       Les variables d'environnement permettent de stocker des informations sensibles et des paramètres spécifiques à chaque environnement, sans les intégrer directement dans le code. Cela renforce la sécurité, la portabilité et la flexibilité des applications, en permettant de modifier ces valeurs sans toucher au code source.
 
+   ---START RUNING APPLICATION-----------
+   using npm start
+   ![Logo](images/runpic.png)
+
 
 
 
